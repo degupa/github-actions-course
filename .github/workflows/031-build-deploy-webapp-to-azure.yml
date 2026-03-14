@@ -17,7 +17,7 @@
 # For more information on the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # For more samples to get started with GitHub Action workflows to deploy to Azure: https://github.com/Azure/actions-workflow-samples
 
-name: Build and Deploy .NET 6 WebApp to Azure
+name: 031-build-deploy-webapp-to-azure
 
 env:
   AZURE_WEBAPP_NAME: appservice-enis
@@ -46,7 +46,7 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      # 3️⃣ Cache de dependencias NuGet para acelerar builds
+      # 3️⃣ Cache de dependencias NuGet
       - name: Cache NuGet packages
         uses: actions/cache@v3
         with:
@@ -63,8 +63,8 @@ jobs:
       - name: dotnet publish
         run: dotnet publish -c Release -o ./myapp
 
-      # 6️⃣ Listar archivos para depuración (opcional)
-      - name: List published files
+      # 6️⃣ Verificar carpeta publicada (opcional)
+      - name: Verify published files
         run: ls -R ./myapp
 
       # 7️⃣ Subir artifact
